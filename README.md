@@ -207,8 +207,8 @@ dataset_v1.0/
 
 ## Результаты исследования
 
-<img src="./results/MP.png" width="200" />
-<img src="./results/MM.png" width="200" />
-<img src="./results/MLP.png" width="200" />
-<img src="./results/MKK.png" width="200" />
-<img src="./results/t-SNE.png" width="200" />
+<img src="./results/MP.png" width="300" />
+<img src="./results/MM.png" width="300" />
+<img src="./results/MLP.png" width="300" />
+<img src="./results/MKK.png" width="300" />
+<img src="./results/t-SNE.png" width="300" />
