@@ -207,4 +207,4 @@ dataset_v1.0/
 
 ## Результаты исследования
 
-<img src="./ConceptNavigator/results/MP.png" width="200" />
+<img src="./results/MP.png" width="200" />
