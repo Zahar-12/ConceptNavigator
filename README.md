@@ -84,6 +84,12 @@ Precision@3, которая показывает долю вопросов, дл
 
 ```commandline
 ConceptNavigator
+├── results
+│   ├── MKK.png
+│   ├── MLP.png
+│   ├── MM.png
+│   ├── MP.png
+│   └── t-SNE.png
 ├── semantic_search
 │   ├── code_corpus.json
 │   ├── eval_questions.json
@@ -207,14 +213,12 @@ dataset_v1.0/
 
 ## Результаты исследования
 
----
-
 ### ТАБЛИЦА Precision@3:
 <img src="./results/MP.png" width="300" />
 
 ---
 
-### ТАБЛИЦА MRR:
+### ТАБЛИЦА MR
 <img src="./results/MM.png" width="300" />
 
 ---
