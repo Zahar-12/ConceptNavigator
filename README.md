@@ -96,7 +96,8 @@ ConceptNavigator
 │   └── starter.ipynd
 ├── .gitignore
 ├── README.md
-└── requirements.txt
+├── requirements.txt
+└── Пояснительная_записка_отчет.pdf
 ```
 
 ---
