@@ -84,6 +84,8 @@ Precision@3, которая показывает долю вопросов, дл
 
 ```commandline
 ConceptNavigator
+├── docs
+│   └── Пояснительная_записка_отчет.pdf
 ├── results
 │   ├── MKK.png
 │   ├── MLP.png
@@ -96,8 +98,7 @@ ConceptNavigator
 │   └── starter.ipynd
 ├── .gitignore
 ├── README.md
-├── requirements.txt
-└── Пояснительная_записка_отчет.pdf
+└── requirements.txt
 ```
 
 ---
