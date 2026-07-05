@@ -1,22 +1,109 @@
-<h1 align="center">
-Concept Navigator
-</h1>
+## Concept Navigator
 
-<hr>
+---
 
-<h1> Описание проекта</h1>
+## Структура проекта
 
-<hr>
+```commandline
+ConceptNavigator
+├── semantic_search
+    ├── code_corpus.json
+    ├── eval_questions.json
+    └── starter.ipynd
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
 
-<h1> Описание датасета </h1>
-<p>
+---
+
+## Описание датасета
+
 Датасет предназначен для разработки и оценки системы 
 семантического поиска по корпусу программного кода 
 (кейс «Навигатор по смыслу», версия 1.0). Он включает 
 200 функций на Python и Java, сгруппированных по 
 5 тематическим категориям, и 25 тестовых вопросов на 
 русском и английском языках.
-</p>
 
-<hr>
+---
 
+## Структура датасета
+
+```commandline
+dataset_v1.0/
+├── categories.json       # 5 категорий кода
+├── code_corpus.json      # 200 функций (100 Python + 100 Java)
+└── eval_questions.json   # 25 тестовых вопросов с эталонными ответами
+```
+
+---
+
+## Описание файлов
+
+**code_corpus.jon** - корпус функций для индексирования. Содержит 
+200 записей в виде массива JSON.
+
+### Поля каждой функции
+
+| Поле            | Тип    | Описание                                          |
+|-----------------|--------|---------------------------------------------------|
+| `id`            | string | Уникальный идентификатор: `func_001` … `func_200` |
+| `language`      | string | Язык программирования: `python` или `java`        |
+| `function_name` | string | Имя функции/метода                                |
+| `code`          | string | Исходный код функции                              |
+| `description`   | string | Описание назначения функции на русском языке      |
+| `category`      | string | Ключ категории из `categories.json`               |
+
+### Распределение по языкам
+
+- `func_001` – `func_100` → `language: "python"`
+- `func_101` – `func_200` → `language: "java"`
+
+### Пример записи
+
+```json
+{
+  "id": "func_001",
+  "language": "python",
+  "function_name": "verify_jwt_token",
+  "code": "def verify_jwt_token(token: str, secret: str) -> dict:\n    \"\"\"Проверяет JWT-токен и возвращает payload или причину невалидности.\"\"\"\n    try:\n        payload = jwt.decode(token, secret, algorithms=[\"HS256\"])\n        return {\"valid\": True, \"data\": payload}\n    except jwt.ExpiredSignatureError:\n        return {\"valid\": False, \"error\": \"expired\"}\n    except jwt.InvalidTokenError:\n        return {\"valid\": False, \"error\": \"invalid\"}",
+  "description": "Проверяет JWT-токен и возвращает payload или причину невалидности.",
+  "category": "auth"
+}
+```
+
+---
+
+****eval_questions.json**** - Тестовые вопросы для оценки 
+качества retrieval. Содержит 25 записей в виде массива JSON.
+
+### Поля каждого вопроса
+
+| Поле               | Тип    | Описание                                   |
+|--------------------|--------|--------------------------------------------|
+| `question_id`      | string | Уникальный идентификатор: `q_01` … `q_25`  |
+| `query`            | string | Поисковый запрос на естественном языке     |
+| `language`         | string | Язык запроса: `ru` или `en`                |
+| `correct_chunk_id` | string | ID эталонной функции из `code_corpus.json` |
+
+### Пример записи
+
+```json
+{
+  "question_id": "q_01",
+  "query": "как проверить, истёк ли токен?",
+  "language": "ru",
+  "correct_chunk_id": "func_001"
+}
+```
+
+### Категории кода
+
+| Ключ         | Название                     | Цвет      | Описание                                           |
+|--------------|------------------------------|-----------|----------------------------------------------------|
+| `auth`       | Аутентификация и авторизация | `#E74C3C` | JWT, пароли, сессии, OAuth, 2FA, права доступа     |
+| `database`   | Работа с базой данных        | `#3498DB` | CRUD, транзакции, миграции, индексы, bulk-операции |
+| `http`       | HTTP-клиенты и API           | `#2ECC71` | REST-вызовы, retry, webhook, upload, кэширование   |
+| `validation` | Валидация и парсинг          | `#F39C12` | email, телефон, ИНН, СНИЛС, ISO-даты, URL          |
+| `utils`      | Утилиты и хелперы            | `#9B59B6` | форматирование, кэш, slugify, sanitize             |
