@@ -211,4 +211,4 @@ dataset_v1.0/
 <img src="./results/MM.png" width="300" />
 <img src="./results/MLP.png" width="300" />
 <img src="./results/MKK.png" width="300" />
-<img src="./results/t-SNE.png" width="300" />
+<img src="./results/t-SNE.png" width="500" />
